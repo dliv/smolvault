@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(smolvault/**)",
+      "Bash(cargo:*)",
+      "Bash(npm:*)",
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
