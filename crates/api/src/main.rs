@@ -36,7 +36,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(health))
-        .route("/api/health", get(health))
+        .route("/health", get(health))
         .layer(TraceLayer::new_for_http());
 
     let listener = match tokio::net::TcpListener::bind(&addr).await {
