@@ -1,0 +1,16 @@
+// Prettier config - aiming for consistency with rustfmt where possible
+//
+// | Setting         | rustfmt default | Prettier setting      |
+// |-----------------|-----------------|----------------------|
+// | Quotes          | Double "        | singleQuote: false   |
+// | Semicolons      | Required        | semi: true           |
+// | Trailing commas | Yes (multi-line)| trailingComma: "all" |
+// | Indent          | 4 spaces        | tabWidth: 2 (JS std) |
+// | Line width      | 100             | printWidth: 100      |
+{
+  semi: true,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: "all",
+  printWidth: 100,
+}

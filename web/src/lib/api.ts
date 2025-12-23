@@ -6,7 +6,7 @@ export interface HealthResponse {
 }
 
 export async function fetchHealth(): Promise<HealthResponse> {
-  const res = await fetch('/api/health');
+  const res = await fetch("/api/health");
   if (!res.ok) {
     throw new Error(`API error: ${res.status}`);
   }
@@ -18,7 +18,7 @@ export async function apiFetch<T>(path: string, options?: RequestInit): Promise<
   const res = await fetch(path, {
     ...options,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       ...options?.headers,
     },
   });

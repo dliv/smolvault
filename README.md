@@ -29,3 +29,14 @@ docker compose up -d
 | Traefik Dashboard | http://localhost:8081 | |
 | API (local) | http://localhost:4000 | `PORT` env var |
 | Web (local) | http://localhost:4001 | via npm run dev |
+
+## Monorepo Commands
+
+Uses [just](https://github.com/casey/just) as a command runner. Install with `cargo install just` or `brew install just`.
+
+```bash
+just fmt      # Format all code (Rust + TS)
+just check    # Check formatting
+just lint     # Lint all code
+just test     # Run tests
+```
