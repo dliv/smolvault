@@ -11,9 +11,11 @@ Personal vault for bookmarks, notes, and more. Built primarily for learning Rust
 - Docker Compose (Postgres, pgAdmin, Traefik)
 - Rust workspace with Axum API skeleton
 - Config system (TOML + env var layering)
+- Next.js frontend with health check page
 
 **Next:**
-- Next.js frontend skeleton
+- Integration (Traefik routing, same-domain setup)
+- Database setup (sqlx, migrations)
 - Then: first real feature (bookmarks CRUD)
 
 ## Tech Stack

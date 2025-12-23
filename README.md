@@ -28,4 +28,4 @@ docker compose up -d
 | pgAdmin | http://localhost:5051 | `admin@example.com` / `admin` |
 | Traefik Dashboard | http://localhost:8081 | |
 | API (local) | http://localhost:4000 | `PORT` env var |
-| Web (local) | http://localhost:3001 | when running on host |
+| Web (local) | http://localhost:4001 | via npm run dev |

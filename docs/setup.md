@@ -30,10 +30,10 @@ Tracking progress on the initial project setup. Once complete, move to feature d
 
 ## Phase 4: Next.js Frontend
 
-- [ ] Initialize Next.js app in `web/`
-- [ ] Basic project structure
-- [ ] API client setup (fetch wrapper or similar)
-- [ ] Health check page to verify API connectivity
+- [x] Initialize Next.js app in `web/` (TypeScript, Tailwind, App Router)
+- [x] Basic project structure (`src/app`, `src/lib`)
+- [x] API client setup (`src/lib/api.ts` with fetch wrapper)
+- [x] Health check page to verify API connectivity
 
 ## Phase 5: Integration
 
@@ -57,6 +57,8 @@ Tracking progress on the initial project setup. Once complete, move to feature d
 - **macOS quirk:** Must bind to 127.0.0.1 (not 0.0.0.0) for proper port conflict detection
 - **Config layering:** `config.toml` → `config.local.toml` → env vars (secrets via env)
 - **Service naming:** Using simple service names in docker-compose (`db`, `pgadmin`, `traefik`)
+- **Next.js:** App Router, TypeScript, Tailwind, src directory structure
+- **API client:** Simple fetch wrapper in `web/src/lib/api.ts`, base URL from `NEXT_PUBLIC_API_URL` env var
 
 ## After Setup
 

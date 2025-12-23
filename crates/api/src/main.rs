@@ -2,6 +2,7 @@ mod config;
 
 use axum::{Json, Router, routing::get};
 use serde::Serialize;
+use tower_http::cors::{Any, CorsLayer};
 use tower_http::trace::TraceLayer;
 use tracing_subscriber::{EnvFilter, layer::SubscriberExt, util::SubscriberInitExt};
 
@@ -34,9 +35,16 @@ async fn main() {
 
     let addr = settings.server_addr();
 
+    // CORS: permissive for local dev, tighten for production
+    let cors = CorsLayer::new()
+        .allow_origin(Any)
+        .allow_methods(Any)
+        .allow_headers(Any);
+
     let app = Router::new()
         .route("/", get(health))
         .route("/api/health", get(health))
+        .layer(cors)
         .layer(TraceLayer::new_for_http());
 
     let listener = match tokio::net::TcpListener::bind(&addr).await {
