@@ -1,11 +1,17 @@
 # Feature: Frontend Foundations
 
-**Status**: In Progress
+**Status**: In Progress (2/3 complete, typeshare remaining)
 **Created**: 2024-12-23
 
 ## Goal
 
 Establish solid frontend patterns before building real features: solve CORS properly, set up data fetching, and add cross-language type safety.
+
+## Summary
+
+- [x] CORS → Next.js rewrites (path stripping, no CORS in Rust)
+- [x] Data Fetching → SWR
+- [ ] Type Safety → typeshare (next task)
 
 ## Concerns to Address
 

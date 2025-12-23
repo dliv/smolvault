@@ -12,9 +12,13 @@ Personal vault for bookmarks, notes, and more. Built primarily for learning Rust
 - Rust workspace with Axum API skeleton
 - Config system (TOML + env var layering)
 - Next.js frontend with health check page
+- Next.js rewrites (proxy /api/* to Rust, no CORS needed)
+- SWR for client-side data fetching
+- Prettier + `just` for monorepo formatting
+- VSCode extensions & settings
 
 **Next:**
-- Integration (Traefik routing, same-domain setup)
+- typeshare (Rust → TS type generation)
 - Database setup (sqlx, migrations)
 - Then: first real feature (bookmarks CRUD)
 
@@ -73,8 +77,9 @@ cd web && npm run dev
 ## Key Commands
 
 ```bash
-cargo fmt              # Format Rust code
-cargo clippy           # Lint Rust code
-cargo test             # Run tests
-cd web && npm run dev  # Start frontend dev server
+just fmt               # Format all code (Rust + TS)
+just lint              # Lint all code
+just test              # Run tests
+cargo run -p api       # Run Rust backend
+cd web && npm run dev  # Run Next.js frontend
 ```

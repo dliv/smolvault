@@ -15,7 +15,7 @@ web/.env*.local
 
 # IDE
 .idea/
-.vscode/
+.vscode/*.code-workspace
 *.swp
 *.swo
 

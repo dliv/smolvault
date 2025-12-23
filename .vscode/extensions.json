@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    // Rust
+    "rust-lang.rust-analyzer",
+    "tamasfe.even-better-toml",
+
+    // TypeScript / Next.js
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+
+    // JSON5 support (for .prettierrc.json5 etc)
+    "blueglassblock.better-json5"
+  ]
+}

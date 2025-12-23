@@ -34,13 +34,18 @@ Tracking progress on the initial project setup. Once complete, move to feature d
 - [x] Basic project structure (`src/app`, `src/lib`)
 - [x] API client setup (`src/lib/api.ts` with fetch wrapper)
 - [x] Health check page to verify API connectivity
+- [x] SWR for client-side data fetching
+- [x] Prettier setup (config matches rustfmt style where possible)
+- [x] `just` command runner for monorepo tasks (`just fmt`, `just lint`)
+- [x] VSCode extensions & settings (`.vscode/`)
 
-## Phase 5: Integration
+## Phase 5: Integration (Local Dev Done, Containerized TBD)
 
-- [ ] Traefik routing: `/api/*` to Rust, `/*` to Next
-- [ ] Verify same-domain setup works
-- [ ] Document local dev workflow (both services running)
-- [ ] Test containerized mode (optional, for later)
+- [x] Next.js rewrites proxy `/api/*` to Rust (strips prefix)
+- [x] Rust routes at root (`/health` not `/api/health`)
+- [x] No CORS needed - same-origin via proxy
+- [x] Traefik config ready with StripPrefix middleware (commented, for containers)
+- [ ] Test full containerized mode (optional, for later)
 
 ## Phase 6: Database
 
@@ -53,12 +58,16 @@ Tracking progress on the initial project setup. Once complete, move to feature d
 
 ## Notes & Decisions Made
 
-- **Port choices:** Postgres 5433, pgAdmin 5051, Traefik dashboard 8081 (avoiding conflicts)
+- **Port choices:** Postgres 5433, pgAdmin 5051, Traefik dashboard 8081, API 4000, Web 4001
 - **macOS quirk:** Must bind to 127.0.0.1 (not 0.0.0.0) for proper port conflict detection
 - **Config layering:** `config.toml` → `config.local.toml` → env vars (secrets via env)
 - **Service naming:** Using simple service names in docker-compose (`db`, `pgadmin`, `traefik`)
 - **Next.js:** App Router, TypeScript, Tailwind, src directory structure
-- **API client:** Simple fetch wrapper in `web/src/lib/api.ts`, base URL from `NEXT_PUBLIC_API_URL` env var
+- **API proxy:** Next.js rewrites `/api/*` → Rust (strips prefix), no CORS needed
+- **Path stripping:** Both Next.js (dev) and Traefik (prod) strip `/api` prefix, Rust routes at root
+- **Data fetching:** SWR for client-side (simpler than TanStack Query, already know RQ from work)
+- **Formatting:** Prettier for TS (double quotes, trailing commas to match Rust), `just fmt` for monorepo
+- **Task runner:** `just` (simpler than Make, popular in Rust community)
 
 ## After Setup
 
