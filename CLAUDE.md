@@ -2,6 +2,20 @@
 
 Personal vault for bookmarks, notes, and more. Built primarily for learning Rust.
 
+## Status
+
+**Phase:** Initial Setup (see `docs/setup.md` for details)
+
+**Done:**
+- Project structure & docs scaffolding
+- Docker Compose (Postgres, pgAdmin, Traefik)
+- Rust workspace with Axum API skeleton
+- Config system (TOML + env var layering)
+
+**Next:**
+- Next.js frontend skeleton
+- Then: first real feature (bookmarks CRUD)
+
 ## Tech Stack
 
 - **Backend**: Rust with Axum (tokio async runtime)

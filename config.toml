@@ -1,0 +1,7 @@
+[server]
+host = "127.0.0.1"
+port = 4000
+
+[database]
+# Override with DATABASE__URL env var for secrets
+url = "postgres://smolvault:smolvault@localhost:5433/smolvault"

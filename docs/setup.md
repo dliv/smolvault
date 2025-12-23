@@ -1,0 +1,66 @@
+# Initial Setup
+
+Tracking progress on the initial project setup. Once complete, move to feature development.
+
+## Phase 1: Project Foundation
+
+- [x] Create project structure
+- [x] Set up CLAUDE.md and agentic development docs
+- [x] Create architecture.md with system design
+- [x] ADR for initial tech stack choices
+- [x] Feature template and `/feature` skill
+
+## Phase 2: Infrastructure (Docker)
+
+- [x] docker-compose.yml with services
+- [x] PostgreSQL on port 5433 (avoids conflict with host postgres)
+- [x] pgAdmin on port 5051
+- [x] Traefik reverse proxy (port 80, dashboard on 8081)
+- [x] .env.example with defaults
+- [x] .gitignore
+
+## Phase 3: Rust Backend
+
+- [x] Cargo workspace at repo root
+- [x] `crates/api` - Axum web server with health endpoint
+- [x] `crates/core` - Domain types (Bookmark, Note models)
+- [x] Config system (`config` crate with TOML + env layering)
+- [x] Tracing/logging setup
+- [x] Configurable host/port with proper error handling
+
+## Phase 4: Next.js Frontend
+
+- [ ] Initialize Next.js app in `web/`
+- [ ] Basic project structure
+- [ ] API client setup (fetch wrapper or similar)
+- [ ] Health check page to verify API connectivity
+
+## Phase 5: Integration
+
+- [ ] Traefik routing: `/api/*` to Rust, `/*` to Next
+- [ ] Verify same-domain setup works
+- [ ] Document local dev workflow (both services running)
+- [ ] Test containerized mode (optional, for later)
+
+## Phase 6: Database
+
+- [ ] sqlx setup in Rust
+- [ ] Initial migrations (users, bookmarks, notes tables)
+- [ ] Connection pool configuration
+- [ ] Basic repository pattern or query layer
+
+---
+
+## Notes & Decisions Made
+
+- **Port choices:** Postgres 5433, pgAdmin 5051, Traefik dashboard 8081 (avoiding conflicts)
+- **macOS quirk:** Must bind to 127.0.0.1 (not 0.0.0.0) for proper port conflict detection
+- **Config layering:** `config.toml` → `config.local.toml` → env vars (secrets via env)
+- **Service naming:** Using simple service names in docker-compose (`db`, `pgadmin`, `traefik`)
+
+## After Setup
+
+Once phases 1-6 are complete, switch to feature-based development:
+1. Use `/feature <name>` to plan features
+2. First feature: Bookmarks CRUD
+3. Then: Notes, tags, search, etc.
