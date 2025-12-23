@@ -1,6 +1,6 @@
 # Feature: Frontend Foundations
 
-**Status**: Planning
+**Status**: In Progress
 **Created**: 2024-12-23
 
 ## Goal
@@ -40,28 +40,14 @@ Establish solid frontend patterns before building real features: solve CORS prop
 
 ### 2. Data Fetching (Client-Side)
 
-**Current state**: Raw `useEffect` + `fetch`. Works but footgun-prone.
+**Decision**: SWR
 
-**Options:**
+Chose SWR over TanStack Query for simplicity. Already know React Query from work, so SWR expands the toolkit.
 
-| Library | Pros | Cons |
-|---------|------|------|
-| **TanStack Query** | Industry standard, powerful devtools, handles caching/retries/stale data | Larger API surface, more to learn |
-| **SWR** | Simpler API, Vercel-made (Next.js synergy), lighter | Fewer features, smaller ecosystem |
-
-**Discussion points:**
-- Both solve the same core problems: caching, deduplication, revalidation, loading/error states
-- SWR's simplicity might be better for a learning project
-- TanStack Query's devtools are really nice for debugging
-- Vercel makes both SWR and Next.js, so integration is solid
-- TanStack Query is framework-agnostic (useful knowledge if you use other frameworks later)
-
-**Leaning toward**: Undecided. Need to pick one.
-
-**Questions to resolve:**
-- Simplicity (SWR) vs power/ecosystem (TanStack)?
-- Does "Vercel makes both" actually matter for compatibility?
-- Is this a "learn the popular thing" situation (TanStack) or "right tool for the job" (SWR)?
+**Done:**
+- [x] Installed SWR
+- [x] Refactored health check page to use `useSWR` hook
+- [x] Removed manual `useEffect` + `useState` pattern
 
 ---
 

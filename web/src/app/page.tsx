@@ -1,19 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 import { fetchHealth, HealthResponse } from "@/lib/api";
 
 export default function Home() {
-  const [health, setHealth] = useState<HealthResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchHealth()
-      .then(setHealth)
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-  }, []);
+  const { data: health, error, isLoading } = useSWR<HealthResponse>("/api/health", fetchHealth);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-900">
@@ -27,11 +18,11 @@ export default function Home() {
           <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
             API Status
           </h2>
-          {loading && <p className="text-zinc-500">Checking API...</p>}
+          {isLoading && <p className="text-zinc-500">Checking API...</p>}
           {error && (
             <div className="text-red-600 dark:text-red-400">
               <p className="font-medium">Connection failed</p>
-              <p className="text-sm">{error}</p>
+              <p className="text-sm">{error.message}</p>
               <p className="mt-2 text-xs text-zinc-500">
                 Make sure the API is running: cargo run -p api
               </p>
