@@ -1,5 +1,4 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
-
+// API calls use relative URLs - Next.js rewrites proxy /api/* to Rust backend
 export interface HealthResponse {
   status: string;
   service: string;
@@ -7,7 +6,7 @@ export interface HealthResponse {
 }
 
 export async function fetchHealth(): Promise<HealthResponse> {
-  const res = await fetch(`${API_BASE}/api/health`);
+  const res = await fetch('/api/health');
   if (!res.ok) {
     throw new Error(`API error: ${res.status}`);
   }
@@ -16,7 +15,7 @@ export async function fetchHealth(): Promise<HealthResponse> {
 
 // Generic fetch wrapper for future endpoints
 export async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
+  const res = await fetch(path, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
